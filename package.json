@@ -10,7 +10,8 @@
         "cookie-parser": "~1.4.4",
         "debug": "~2.6.9",
         "express": "~4.16.1",
-        "morgan": "~1.9.1"
+        "morgan": "~1.9.1",
+        "sweetalert2": "^11.4.14"
     },
     "devDependencies": {
         "prisma": "^3.14.0"
