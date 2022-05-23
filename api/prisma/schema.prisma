@@ -15,6 +15,7 @@ model user{
   name String
   passwrd String @default("0000s")
   role ROLE @default(GUEST)
+  
 }
 enum ROLE{
   ADMIN 
