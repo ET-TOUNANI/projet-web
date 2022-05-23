@@ -1,0 +1,20 @@
+POST http://localhost:3000/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "kamal@gmail.com",
+    "name": "Kamal",
+    "role":"GUEST",
+    "passwrd": "1111"
+}
+
+###
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "kamal@gmail.com",
+    "passwrd": "1111"
+}
+###
+GET  http://localhost:3000/ HTTP/1.1
