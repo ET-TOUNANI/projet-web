@@ -6,45 +6,25 @@ Accept: application/json
 GET http://localhost:3000/users?skip=0&take=2
 Accept: application/json
 
-### Get all admins
-GET http://localhost:3000/users/admins
-Accept: application/json
-
-### Get all authors
-GET http://localhost:3000/users/authors
-Accept: application/json
-
-### Get all guests
-GET http://localhost:3000/users/guests
-Accept: application/json
-
 ### Get user by id
 GET http://localhost:3000/users/1
 Accept: application/json
 
-### Get user by email
-GET http://localhost:3000/users/email/y.lafryhi@gmail.com
-Accept: application/json
+
 
 ### Delete user
 DELETE http://localhost:3000/users/3
 Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
 
-### Delete all users
-DELETE http://localhost:3000/users
-Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
 
 ### Create new user
 POST http://localhost:3000/users
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
 
 {
-  "name": "hamsa",
-  "email": "y.hamsa@gmail.com",
+  "name": "rachid",
+  "email": "h.SAMIRA@gmail.com",
   "passwrd": "OVdsvyI&7*bd#4K",
-  "role": "ADMIN"
+  "role": "GUEST"
 }
 

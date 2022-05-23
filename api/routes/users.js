@@ -12,7 +12,7 @@ router.get('/', async function(req, res, next) {
     const u = [...users]
     res.send(u.splice(skip, take));
 });
-
+/* GET user by id. */
 router.get('/:id', async function(req, res, next) {
     const user = await prisma.user.findUnique({
         where: {
@@ -29,13 +29,24 @@ router.get('/:id', async function(req, res, next) {
     }
 
 });
+/* POSt add user. */
 router.post('/', async function(req, res, next) {
-    const user = await prisma.user.create({
-        data: req.body
-    })
-    res.status(200)
-    res.send(user)
+    try {
+        const user = await prisma.user.create({
+            data: req.body
+        })
+        res.status(200)
+        res.send(user)
+    } catch (e) {
+
+        console.log(
+            'email already exist !!'
+        )
+        throw e
+    }
+
 });
+/* PAtCH update user. */
 router.patch('/', async function(req, res, next) {
 
     const user = await prisma.user.update({
@@ -45,10 +56,20 @@ router.patch('/', async function(req, res, next) {
     res.status(201)
     res.send(user)
 });
+/* delete user with id . */
 router.delete('/:id', async function(req, res, next) {
-    const u = await prisma.user.delete({
-        where: { id: +req.params.id },
-    })
+    try {
+        const u = await prisma.user.delete({
+            where: { id: +req.params.id },
+        })
+    } catch (e) {
+
+        console.log(
+            'There is no user here with this id !!'
+        )
+        throw e
+    }
+
     res.status(204)
     res.send(u)
 });

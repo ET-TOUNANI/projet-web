@@ -1,22 +1,76 @@
 var express = require('express');
 var router = express.Router();
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient()
+    /* GET articles listing. */
+router.get('/', async function(req, res, next) {
+    let skip = req.query.skip
+    let take = req.query.take
+    let articles = await prisma.article.findMany()
+    skip = skip || 0
+    take = take || 10
+    const u = [...articles]
+    res.send(u.splice(skip, take));
+});
+/* GET article by id. */
+router.get('/:id', async function(req, res, next) {
+    const article = await prisma.article.findUnique({
+        where: {
+            id: +req.params.id
+        }
+    })
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    const [skip, take] = req.query
-    res.send('respond with a resource');
-});
-router.get('/:id', function(req, res, next) {
-    res.send('respond with a resource');
-});
-router.post('/', function(req, res, next) {
-    res.send('respond with a resource');
-});
-router.patch('/', function(req, res, next) {
-    res.send('respond with a resource');
-});
-router.delete('/:id', function(req, res, next) {
-    res.send('respond with a resource');
-});
+    if (article != {}) {
+        res.status(200)
+        res.send(article);
+    } else {
+        res.status(404)
+        res.send({})
+    }
 
+});
+/* POSt add article. */
+router.post('/', async function(req, res, next) {
+    try {
+        const article = await prisma.article.create({
+            data: req.body
+        })
+        res.status(200)
+        res.send(article)
+    } catch (e) {
+
+        console.log(
+            'error'
+        )
+        throw e
+    }
+
+});
+/* PAtCH update article. */
+router.patch('/', async function(req, res, next) {
+
+    const article = await prisma.article.update({
+        where: { id: +req.body.id },
+        data: req.body,
+    })
+    res.status(201)
+    res.send(article)
+});
+/* delete article with id . */
+router.delete('/:id', async function(req, res, next) {
+    try {
+        const u = await prisma.article.delete({
+            where: { id: +req.params.id },
+        })
+    } catch (e) {
+
+        console.log(
+            'There is no article here with this id !!'
+        )
+        throw e
+    }
+
+    res.status(204)
+    res.send(u)
+});
 module.exports = router;
