@@ -1,3 +1,4 @@
+//registre
 POST http://localhost:3000/register HTTP/1.1
 content-type: application/json
 
@@ -7,7 +8,7 @@ content-type: application/json
     "role":"GUEST",
     "passwrd": "1111"
 }
-
+//login
 ###
 POST http://localhost:3000/login HTTP/1.1
 content-type: application/json

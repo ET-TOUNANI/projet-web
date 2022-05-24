@@ -33,7 +33,13 @@ router.get('/:id', async function(req, res, next) {
 router.post('/', async function(req, res, next) {
     try {
         const article = await prisma.article.create({
-            data: req.body
+            data: {
+                title: req.body.title,
+                content: req.body.content,
+                published: req.body.published,
+                authorId: req.body.UserId,
+                image: req.body.image,
+            }
         })
         res.status(200)
         res.send(article)
@@ -48,9 +54,8 @@ router.post('/', async function(req, res, next) {
 });
 /* PAtCH update article. */
 router.patch('/', async function(req, res, next) {
-
     const article = await prisma.article.update({
-        where: { id: +req.body.id },
+        where: { id: parseInt(req.body.id) },
         data: req.body,
     })
     res.status(201)
@@ -60,8 +65,10 @@ router.patch('/', async function(req, res, next) {
 router.delete('/:id', async function(req, res, next) {
     try {
         const u = await prisma.article.delete({
-            where: { id: +req.params.id },
+            where: { id: parseInt(req.params.id) },
         })
+        res.status(204)
+        res.send(u)
     } catch (e) {
 
         console.log(
@@ -70,7 +77,6 @@ router.delete('/:id', async function(req, res, next) {
         throw e
     }
 
-    res.status(204)
-    res.send(u)
+
 });
 module.exports = router;

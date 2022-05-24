@@ -1,128 +1,41 @@
 
 ### Get all articles
-GET http://localhost:3000/articles
+GET http://localhost:3000/article
 
 ### Get articles by Id
-GET http://localhost:3000/articles/1
+GET http://localhost:3000/article/1
 
 ### Get articles by Id
-GET http://localhost:3000/articles/87
+GET http://localhost:3000/article?skip=0&take=2
 
 ### Add new article
-POST http://localhost:3000/articles
+POST http://localhost:3000/article
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
 
 {
   "title": "Test",
   "content": "This as an article content",
-  "published": 1,
-  "UserId" : 12
+  "published": true,
+  "UserId" : 1,
+  "image" : "1.png"
 }
 
 ### Delete an article
-DELETE http://localhost:3000/articles/11
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
+DELETE http://localhost:3000/article/2
+Accept: application/json
+
 
 ### Update an article
-PUT http://localhost:3000/articles/9
+PATCH  http://localhost:3000/article
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
 
 {
-  "title": "Test",
-  "content": "This as an article content",
-  "published": 0,
-  "UserId" : 10
+  "id" : 3,
+  "title": "Test2"
 }
-
-### Step over the first 2 artices and take 3 articles
-GET http://localhost:3000/articles/offset/2/limit/3
-
-### Get article by user Id
-GET http://localhost:3000/users/12/articles
-
-### Get article by title
-GET http://localhost:3000/articles/title/Test
 
 ### GET articles number
-GET http://localhost:3000/articles?number
+GET http://localhost:3000/article?number
 
-
-### Get all comments
-GET http://localhost:3000/comments
-
-### Get comments number
-GET http://localhost:3000/comments?number
-
-### Get comment by Id
-GET http://localhost:3000/comments/4
-
-### Get comment by Id
-GET http://localhost:3000/comments/99
-
-### Get comments of an article by Id
-GET http://localhost:3000/articles/5/comments
-
-### Add new comment
-POST http://localhost:3000/comments
-content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
-
-{
-  "content": "This is a comment content",
-  "ArticleId": 1
-}
-
-### Update a comment
-PUT http://localhost:3000/comments/11
-content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
-
-{
-  "content": "This is a comment content",
-  "ArticleId": 1
-}
-
-### Delete a comment vy Id
-DELETE http://localhost:3000/comments/11
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
-
-
-### Get all tags
-GET http://localhost:3000/tags
-
-### get tags number
-GET http://localhost:3000/tags?number
-
-### Get tag by Id
-GET http://localhost:3000/tags/3
-
-### Add new tag
-POST http://localhost:3000/tags
-content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
-
-{
-  "name": "Tag 1"
-}
-
-### Update a tag
-PUT http://localhost:3000/tags/11
-content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6MSwidXNlcm5hbWUiOiJBcmllbDE3IiwiZW1haWwiOiJUaG9tYXM0NEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjNKT3B1YVdTTlBUSSIsInJvbGUiOiJhZG1pbiIsImNyZWF0ZWRBdCI6IjIwMjEtMDQtMTFUMDc6NTQ6MjUuMDAwWiIsInVwZGF0ZWRBdCI6IjIwMjEtMDUtMTRUMDk6MTg6MTAuMDAwWiJ9LCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjQyMTI5NTZ9.r1eHgye3y4X7gUGlykGkUVX4oj1c_9hrYVBZjjV-YvU
-
-{
-  "name": "tag 2"
-}
-
-### Login to get JWT token
-POST http://localhost:3000/users/login
-content-type: application/json
-
-{
-  "email": "Thomas44@gmail.com",
-  "password": "3JOpuaWSNPTI"
-}
 
 

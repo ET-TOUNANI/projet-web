@@ -1,0 +1,39 @@
+
+### Get all commentaires
+GET http://localhost:3000/commentaire
+
+### Get commentaires by Id
+GET http://localhost:3000/commentaire/1
+
+### Get commentaires by Id
+GET http://localhost:3000/commentaire?skip=0&take=2
+
+### Add new commentaire
+POST http://localhost:3000/commentaire
+content-type: application/json
+
+{
+  "comment": "salam",
+  "writtenById":1, 
+  "postId":3
+}
+
+### Delete an commentaire
+DELETE http://localhost:3000/commentaire/1
+Accept: application/json
+
+
+### Update an commentaire
+PATCH  http://localhost:3000/commentaire
+content-type: application/json
+
+{
+  "id" : 2,
+  "comment": "sabah lkhayer"
+}
+
+### GET commentaires number
+GET http://localhost:3000/commentaire?number
+
+
+
