@@ -8,12 +8,7 @@ router.get('/', function(req, res, next) {
 });
 router.post('/register', async function(req, res, next) {
     const user = await prisma.user.create({
-        data: {
-            email: req.body.email,
-            name: req.body.name,
-            passwrd: req.body.passwrd,
-            role: req.body.role,
-        },
+        data: req.body,
     })
     res.status(200)
     res.send(user)
