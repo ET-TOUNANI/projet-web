@@ -34,8 +34,8 @@ model article {
   authorId  Int
   image String?
   author    user      @relation(fields: [authorId], references: [id])
-  //comments  commentaire[]
-  //categor      categorie[]     @relation("TagToPost")
+  comments  commentaire[]
+  categor categorie[] @relation("TagToPost")
 }
 
 model commentaire {
@@ -45,7 +45,7 @@ model commentaire {
   writtenById Int
   postId      Int
   writtenBy   user     @relation(fields: [writtenById], references: [id])
- // post        article     @relation(fields: [postId], references: [id], onUpdate: NoAction)
+  post        article     @relation(fields: [postId], references: [id], onUpdate: NoAction)
 }
 
 model categorie {
@@ -53,5 +53,5 @@ model categorie {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   nom     String  
-  //articles article[] @relation("TagToPost")
+  articles article[] @relation("TagToPost")
 }
