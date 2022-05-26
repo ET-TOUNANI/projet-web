@@ -22,10 +22,10 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "name": "rachid",
-  "email": "h.hassan@gmail.com",
-  "passwrd": "OVdsvyI&7*bd#4K",
-  "role": "GUEST"
+  "name": "hamid",
+  "email": "hamid@gmail.com",
+  "passwrd": "1111",  
+  "role": "ADMIN"
 }
 ###
 PATCH  http://localhost:3000/users

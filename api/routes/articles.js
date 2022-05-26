@@ -4,6 +4,10 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient()
     /* GET articles listing. */
 router.get('/', async function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
+
     let skip = req.query.skip
     let take = req.query.take
     let articles = await prisma.article.findMany()
@@ -14,6 +18,10 @@ router.get('/', async function(req, res, next) {
 });
 /* GET article by id. */
 router.get('/:id', async function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
+
     const article = await prisma.article.findUnique({
         where: {
             id: +req.params.id
@@ -31,6 +39,10 @@ router.get('/:id', async function(req, res, next) {
 });
 /* POSt add article. */
 router.post('/', async function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
+
     try {
         const article = await prisma.article.create({
             data: {
@@ -54,6 +66,10 @@ router.post('/', async function(req, res, next) {
 });
 /* PAtCH update article. */
 router.patch('/', async function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
+
     const article = await prisma.article.update({
         where: { id: parseInt(req.body.id) },
         data: req.body,
@@ -63,6 +79,10 @@ router.patch('/', async function(req, res, next) {
 });
 /* delete article with id . */
 router.delete('/:id', async function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
+
     try {
         const u = await prisma.article.delete({
             where: { id: parseInt(req.params.id) },

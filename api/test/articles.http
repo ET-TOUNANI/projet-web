@@ -13,7 +13,7 @@ POST http://localhost:3000/article
 content-type: application/json
 
 {
-  "title": "Test",
+  "title": "Test5",
   "content": "This as an article content",
   "published": true,
   "UserId" : 1,
