@@ -15,8 +15,8 @@ POST http://localhost:3000/login
 content-type: application/json
 
 {
-    "email": "hami@gmail.com",
-    "passwrd": "2222"
+    "email": "admin@gmail.com",
+    "passwrd": "1111"
 }
 ###
 GET  http://localhost:3000/ HTTP/1.1
