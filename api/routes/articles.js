@@ -22,9 +22,9 @@ router.get('/:id', async function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Headers, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
 
-    const article = await prisma.article.findUnique({
+    const article = await prisma.article.findMany({
         where: {
-            id: +req.params.id
+            authorId: +req.params.id
         }
     })
 

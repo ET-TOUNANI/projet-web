@@ -35,9 +35,11 @@ router.post('/login', async function(req, res, next) {
         if (user.passwrd === req.body.passwrd) {
             res.status(200)
             res.send(user)
+        } else {
+            res.status(400)
+            res.send({})
         }
-        res.status(400)
-        res.send({})
+
     } else {
         res.status(404)
         res.send({})

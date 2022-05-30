@@ -48,12 +48,14 @@
 
             <!--navbar-collapse-->
             <div class="collapse navbar-collapse" id="main_nav">
-                <ul class="navbar-nav ml-auto mr-auto">
+                <ul class="navbar-nav ml-auto mr-auto nav-name" style="display: none">
+                    <li class="nav-item">
+                        <a class="nav-link name"> name </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto mr-auto links-nav">
                     <li class="nav-item">
                         <a class="nav-link nav-login" onclick="forLogin()"> Login </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-register" onclick="forRegister()"> register </a>
                     </li>
 
                 </ul>
@@ -149,33 +151,221 @@
     <!--/-->
 
     <div class="templateLogin" style="display: none">
-        <div class="post-card w-70" style="text-align: center;justify-content: center;justify-items: center; margin: auto;">
-            <h3>LOGIN</h3>
-            <div class="post-card-content ">
-                <form>
-                    <div class="row">
-                        <div class="col-md-12 m-3">
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Your email" id="email">
+        <div class="card login-card">
+            <div class="container-fluid  ">
+                <div class="row newslettre-width text-center">
+                    <div class="col-md-12 " style="text-align: center">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header bg-info">
+                                <h5 style="text-align: center" class="title">Log In</h5>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Your password" id="password">
+                            <div class="card-body">
+                                <form>
+                                    <div style="text-align: center" class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="email">Your email :</label>
+                                                <input type="email" class="form-control" placeholder="Your email" id="email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="password">Your password :</label>
+                                                <input type="password" class="form-control" placeholder="Your password" id="password">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div style="text-align: center" class="col-md-12">
+                                            <div class="form-group">
+                                                <button onclick="login()" class="btn btn-info btn-round log" type="button">Log In
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card registre-card">
+            <div class="container-fluid  ">
+                <div class="row newslettre-width text-center">
+                    <div class="col-md-12 " style="text-align: center">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header bg-info">
+                                <h5 style="text-align: center" class="title">Register</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div style="text-align: center" class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Your name :</label>
+                                                <input type="text" class="form-control" placeholder="Your name" id="name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Your email :</label>
+                                                <input type="email" class="form-control" placeholder="Your email" id="newemail">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="password">Your password :</label>
+                                                <input type="password" class="form-control" placeholder="Your password" id="newpassword">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Role :</label><br>
+                                                <input type="radio" style="
+                                                border-radius: 50%;
+                                                width: 20px;
+                                                height: 20px;
+                                                border: 2px solid #999;
+                                                transition: 0.2s all linear;
+                                                margin-right: 5px;
+                                                position: relative;
+                                                top: 4px;" value="AUTHOR" name="role">Author
+                                                <input type="radio" style="
+                                                border-radius: 50%;
+                                                width: 20px;
+                                                height: 20px;
+                                                border: 2px solid #999;
+                                                transition: 0.2s all linear;
+                                                margin-right: 5px;
+                                                position: relative;
+                                                top: 4px;" value="ADMIN" name="role">Admin
+                                                <input type="radio" style="
+                                                border-radius: 50%;
+                                                width: 20px;
+                                                height: 20px;
+                                                border: 2px solid #999;
+                                                transition: 0.2s all linear;
+                                                margin-right: 5px;
+                                                position: relative;
+                                                top: 4px;" value="GUEST" name="role">Guest
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    <div class="row">
-                        <div style="text-align: center" class="col-md-12 m-3">
-                            <div class="form-group">
-                                <button onclick="login()" class="btn btn-primary btn-round log" type="button">Log In
-                                    </button>
+                                    <div class="row">
+                                        <div style="text-align: center" class="col-md-12">
+                                            <div class="form-group">
+                                                <button onclick="Register()" class="btn btn-info btn-round" type="button">register
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </form>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--dashboard-->
+    <div class="templateDashboard" style="display: none">
+        <!--<div>nmbr article</div>
+        <div>nmbr user</div>
+        <div>nmbr categorie</div>-->
+        <div class="crd">
+            <div class="post-card">
 
+                <div class="post-card-content">
+                    <span class="categorie cat">Menage</span>
+                    <table class="table table-striped table-dark kaUserAr">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th class="Audor" scope="col">Author</th>
+                                <th class="role" scope="col">title</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody style="display: none">
+                            <tr class="tr">
+                                <th class="id" scope="row">..</th>
+                                <td class="name">..</td>
+                                <td class="role">..</td>
+                                <td><button class="btn btn-success p-1 btn-round" onclick="editArti()"> edit </button></td>
+                                <td><button class="btn btn-danger p-1 btn-round" onclick="deleteArti() ">delete </button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="templateAddAr" style="display: none">
+        <div class="card Add-card">
+            <div class="container-fluid  ">
+                <div class="row newslettre-width text-center">
+                    <div class="col-md-12 " style="text-align: center">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header bg-info">
+                                <h5 style="text-align: center" class="title">Add Article</h5>
+                            </div>
+                            <div class="card-body">
+                                <form enctype="multipart/form-data">
+                                    <div style="text-align: center" class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="password">title</label>
+                                                <input type="text" class="form-control" placeholder="title of the article" id="title">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="content">Content :</label>
+                                                <textarea name="" id="" class="form-control" cols="30" rows="10">
+
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="image">image :</label>
+                                                <input type="file" name="image" id="image">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div style="text-align: center" class="col-md-12">
+                                            <div class="form-group">
+                                                <button onclick="createNewArticle()" class="btn btn-info btn-round log" type="button">Create
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -277,7 +467,7 @@
         function show(data) {
             const $card = $(".template > .post-card ");
             data.forEach((e) => {
-                const $col = $('<div class = "col-lg-4 col-md-6 articlesDiv"></div>');
+                const $col = $('<div class = "col-lg-6 col-md-12 articlesDiv"></div>');
                 const $clone = $card.clone(true);
                 const src = $("img", $clone).attr("src");
                 $("#img", $clone).attr('src', e.image + '?' + e.id)
@@ -290,21 +480,24 @@
         $.getJSON(url).then(show);
         // login
         function forLogin() {
-            const $card = $(".templateLogin > .post-card ");
-            $(".articlesDiv").attr('style', "display:none")
-            $(".nav-login").attr('style', "display:none")
-            const $col = $('<div class = ""></div>');
-            const $clone = $card.clone(true);
-            console.log('hi')
-            $col.append($clone).appendTo($articlesContainer);
+            const $cardL = $(".templateLogin > .login-card ");
+            const $cardR = $(".templateLogin > .registre-card ");
+            $(".articlesDiv").hide()
+            $(".links-nav").hide()
+            const $col = $('<div class = " loginlog"></div>');
+            const $col2 = $('<div class = " regislog"></div>');
+            const $clone = $cardL.clone(true);
+            const $clone2 = $cardR.clone(true);
 
+            $(".title", $clone2).text("Registre");
+            $(".btn", $clone2).text("Registrer");
+            $col.append($clone).appendTo($articlesContainer);
+            $col2.append($clone2).appendTo($articlesContainer);
         }
 
         function login() {
-
             $email = $('#email')
             $pass = $('#password')
-
             $(document).ready(function() {
                 $(".log").click(function(e) {
                     e.preventDefault();
@@ -316,23 +509,18 @@
                             passwrd: $pass.val()
                         },
                         success: function(result) {
-
                             let role = result.role;
-                            //let token = result.token;
                             let token = 11;
                             let id = result.id;
                             $.cookie('token', token);
                             $.cookie('role', role);
                             $.cookie('id', id);
                             if (role === 'ADMIN') {
-                                alert('hi')
-                                    // window.location.replace("index.html");
+                                Dashboard(result);
                             } else if (role === 'AUTHOR') {
-                                alert('ho')
-                                    // window.location.href = "create.html";
+                                Author(result)
                             } else {
-                                alert('ha')
-                                    // window.location.href = "index.html";
+                                Guest(result)
                             }
                         },
                         error: function(result) {
@@ -343,14 +531,95 @@
                                 showConfirmButton: false,
                                 timer: 2000
                             })
-                            console.log(result)
                         }
                     });
                 });
             });
         }
-        //register
-        function forRegister() {
+
+        function Dashboard(data) {
+            const $card = $(".templateDashboard > .crd");
+            const $col = $('<div class ="col-lg-6 col-md-12"></div>');
+            const $col2 = $('<div class ="col-lg-6 col-md-12"></div>');
+            $(".articlesDiv").hide();
+            $(".loginlog").hide();
+            $(".regislog").hide();
+            $(".links-nav").hide();
+            $nav = $(".nav-name")
+            $nav.show(100)
+            $('.name', $nav).text('welcome ' + data.name + " :)");
+            const $clone1 = $card.clone(true);
+            $(".cat", $clone1).text('Menage Users');
+            $(".Audor", $clone1).text('Name');
+            $(".role", $clone1).text('Role');
+            $('tbody', $clone1).attr('class', 'tableUser')
+            const $clone2 = $card.clone(true);
+            $(".cat", $clone2).text('Menage Articles');
+            $('tbody', $clone2).attr('class', 'tableAr')
+
+            $col.append($clone1).appendTo($articlesContainer);
+            $col2.append($clone2).appendTo($articlesContainer);
+            const url = "http://localhost:3000/article?skip=0&take=10";
+            $.getJSON(url).then(Articles);
+            const url1 = "http://localhost:3000/users?skip=0&take=10";
+            $.getJSON(url1).then(Users);
+        }
+
+
+        function Articles(data) {
+            $articlestable = $(".kaUserAr > .tableAr");
+            const $card = $(".tableAr > .tr ");
+            data.forEach((e) => {
+                const $clone = $card.clone(true);
+                $(".id", $clone).text(e.id);
+                $(".name", $clone).text(e.title);
+                $(".role", $clone).text(e.categorId);
+                $clone.appendTo($articlestable);
+                console.log($articlestable)
+                $articlestable.show()
+            });
+        }
+
+        function Users(data) {
+            $articlestable = $(".kaUserAr > .tableUser");
+            const $card = $(".tableUser > tr ");
+            data.forEach((e) => {
+                const $clone = $card.clone(true);
+                $(".id", $clone).text(e.id);
+                $(".name", $clone).text(e.name);
+                $(".role", $clone).text(e.role);
+                $clone.appendTo($articlestable);
+                console.log($articlestable)
+                $articlestable.show()
+            });
+        }
+
+        function Author(data) {
+            const $card = $(".templateDashboard > .crd");
+            const $cardAdd = $(".templateAddAr > .Add-card");
+            const $col = $('<div class ="col-lg-6 col-md-12"></div>');
+            const $col1 = $('<div class ="col-lg-6 col-md-12"></div>');
+            $(".articlesDiv").hide();
+            $(".loginlog").hide();
+            $(".regislog").hide();
+            $(".links-nav").hide();
+            $nav = $(".nav-name");
+            $nav.show(100);
+            $('.name', $nav).text('welcome ' + data.name + " :)");
+            const $clone1 = $cardAdd.clone(true);
+            const $clone2 = $card.clone(true);
+            $(".cat", $clone2).text('Menage Articles');
+            $(".Audor", $clone2).text('title');
+            $(".role", $clone2).text('categorie');
+            $('tbody', $clone2).attr('class', 'tableAr');
+
+            $col.append($clone2).appendTo($articlesContainer);
+            $col1.append($clone1).appendTo($articlesContainer);
+            const url = "http://localhost:3000/article/" + data.id;
+            $.getJSON(url).then(Articles);
+        }
+
+        function Guest(data) {
 
         }
     </script>
