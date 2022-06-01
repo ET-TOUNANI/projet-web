@@ -13,8 +13,8 @@ POST http://localhost:3000/commentaire
 content-type: application/json
 
 {
-  "comment": "salam",
-  "writtenById":1, 
+  "comment": "hanya 3chiri",
+  "writtenById":"4@gmail.com", 
   "postId":3
 }
 

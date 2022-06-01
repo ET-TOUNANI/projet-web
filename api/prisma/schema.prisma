@@ -28,7 +28,8 @@ enum ROLE {
 }
 
 model categorie {
-  name        String       @id 
+  id Int @id @default(autoincrement())
+  name        String     
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   categor   article[]
@@ -53,8 +54,8 @@ model commentaire {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   comment     String
-  writtenById Int
+  writtenById  String
   postId      Int
-  writtenBy   user     @relation(fields: [writtenById], references: [id])
+  writtenBy   user     @relation(fields: [writtenById], references: [email])
   post        article  @relation(fields: [postId], references: [id], onUpdate: NoAction)
 }

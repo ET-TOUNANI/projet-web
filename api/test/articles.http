@@ -3,7 +3,7 @@
 GET http://localhost:3000/article
 
 ### Get articles by Id
-GET http://localhost:3000/article/48
+GET http://localhost:3000/article/202
 
 ### Get articles by Id
 GET http://localhost:3000/article?skip=0&take=2

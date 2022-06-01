@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 async function clear() {
     await prisma.commentaire.deleteMany({})
     await prisma.article.deleteMany({})
-        //await prisma.user.deleteMany({})
+    await prisma.user.deleteMany({})
     await prisma.categorie.deleteMany({})
 }
 
@@ -17,7 +17,9 @@ const fakerAuthors = () => ({
     passwrd: faker.internet.password(),
     role: 'AUTHOR',
 })
-
+const fakerCategories = () => ({
+    name: faker.animal.type(),
+})
 const fakerAdmins = () => ({
     name: faker.name.firstName(),
     email: faker.internet.email(),
@@ -38,18 +40,19 @@ const getRandomUser = async() => {
     return randomUser
 }
 
-const fakerArticles = async() => ({
+const fakerArticles = async(name) => ({
     title: faker.lorem.sentence(),
-    content: faker.lorem.paragraph(),
-    image: faker.image.imageUrl(),
+    content: faker.lorem.words(680),
+    image: faker.image.animals(),
     published: true,
     authorId: (await getRandomUser()).id,
-    categorId: (await getRandomCategory()).name,
+    categorId: name,
 })
 
-const fakerComments = (artId) => ({
+
+const fakerComments = (artId, randomUser) => ({
     comment: faker.lorem.sentence(),
-    writtenById: 14,
+    writtenById: randomUser,
     postId: artId,
 })
 
@@ -61,34 +64,42 @@ async function main() {
     dotenv.config()
     console.log('Seeding...')
     await clear()
+    var arr = []
         /// --------- Authors ---------------
     for (let i = 0; i < fakerAuthorsRounds; i++) {
-        await prisma.user.create({ data: fakerAuthors() })
+        let o = fakerAuthors()
+        await prisma.user.create({ data: o })
+        arr.push(o.email);
     }
     /// --------- Admins ---------------
     for (let i = 0; i < fakerAdminsRounds; i++) {
-        await prisma.user.create({ data: fakerAdmins() })
+        let o = fakerAdmins();
+        await prisma.user.create({ data: o })
+        arr.push(o.email);
     }
-    /// --------- Categories ---------------
-
+    var arrCat = []
     for (let i = 0; i < fakerCategoriesRounds; i++) {
-        await prisma.categorie.create({ data: { name: faker.word.adverb(6) } })
+        let o = fakerCategories();
+        await prisma.categorie.create({ data: o })
+        arrCat.push(o.name)
     }
 
 
-    /// --------- Articles ---------------
     for (let i = 0; i < fakerArticlesRounds; i++) {
-
-        await prisma.article.create({ data: await fakerArticles() })
+        const randomCategory = arrCat[Math.floor((Math.random() * fakerCategoriesRounds) % fakerCategoriesRounds)]
+        await prisma.article.create({ data: await fakerArticles(randomCategory) })
     }
+
     /// --------- Comments ---------------
     const articles = await prisma.article.findMany()
     for (let i = 0; i < articles.length; i++) {
         const numberOfComments = Math.floor(Math.random() * 20)
         for (let j = 0; j < numberOfComments; j++) {
-            await prisma.commentaire.create({ data: fakerComments(articles[i].id) })
+            const randomUser = arr[Math.floor((Math.random() * fakerAuthorsRounds) % fakerAuthorsRounds)]
+            prisma.commentaire.create({ data: fakerComments(articles[i].id, randomUser) })
         }
     }
+
     console.log('Seeding finished')
 }
 
